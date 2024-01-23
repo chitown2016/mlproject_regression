@@ -9,11 +9,13 @@ app = application
 @app.route('/')
 @cross_origin()
 def home_page():
+    print('We are at home page')
     return render_template('index.html')
 
 @app.route('/predict',methods=['GET','POST'])
 @cross_origin()
 def predict_datapoint():
+    print('We are at /predict route')
     if request.method == 'GET':
         return render_template('index.html')
     else:
@@ -41,6 +43,7 @@ def predict_datapoint():
 @app.route('/predictAPI',methods=['POST'])
 @cross_origin()
 def predict_api():
+    print('We are at /predictAPI')
     if request.method=='POST':
         data = CustomData(
             carat = float(request.json['carat']),
